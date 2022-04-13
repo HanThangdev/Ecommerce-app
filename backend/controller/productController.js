@@ -22,8 +22,7 @@ exports.GetAllProducts = async (req, res) => {
 
 //Get product details
 exports.GetProductDetails = async (req, res, next) => {
-    let product = Product.findById(req.params.id);
-
+    let product = await Product.findById(req.params.id);
 
     if(!product) {
         return res.status(500).json({
@@ -40,8 +39,7 @@ exports.GetProductDetails = async (req, res, next) => {
 
 //Update Product
 exports.UpdateProduct = async(req, res, next) => {
-    let product = Product.findById(req.params.id);
-
+    let product = await Product.findById(req.params.id);
     if(!product) {
         return res.status(500).json({
             success:false,
@@ -62,7 +60,7 @@ exports.UpdateProduct = async(req, res, next) => {
 
 //Delete Product
 exports.DeleteProduct = async(req, res, next) => {
-    let product = Product.findById(req.params.id);
+    let product = await Product.findById(req.params.id);
 
     if(!product) {
         return res.status(500).json({
@@ -71,7 +69,7 @@ exports.DeleteProduct = async(req, res, next) => {
         })
     }
 
-    await product.remove();
+    await product.deleteOne();
 
     res.status(200).json({
         success:true,
