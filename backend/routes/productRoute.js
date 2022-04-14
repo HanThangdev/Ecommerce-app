@@ -7,9 +7,8 @@ router.route("/products").get(GetAllProducts);
 
 router.route("/products/new").post(CreateProduct);
 
-router.route("/products/:id").put(UpdateProduct).delete(DeleteProduct);
+router.route("/products/:id").put(UpdateProduct).delete(DeleteProduct).get(GetProductDetails);
 
-router.route("/products/:id").get(GetProductDetails)
 
 
 
